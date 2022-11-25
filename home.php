@@ -1,3 +1,5 @@
+<?php require_once "php/validador_acesso.php" ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -9,16 +11,37 @@
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/estilo.css">
 </head>
 
-<body>
+<body class="bg-cinza-1">
+
+    <?php include_once "barra_menu.php" ?>
 
     <div class="container">
         <div class="row">
 
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ac fermentum lectus. Pellentesque ac efficitur metus. Quisque pretium lectus tortor, et hendrerit nisi ultrices nec. Morbi eget vulputate dui, ut cursus orci. Donec ac nisl viverra, iaculis nulla vel, consequat turpis. Fusce hendrerit dignissim quam, ut pretium urna sodales a. Nam vel nunc semper elit pretium iaculis. Cras dui est, scelerisque nec sem sed, pellentesque aliquam massa. Nunc vehicula purus molestie nisl gravida, eu dignissim enim lobortis. Ut neque sem, efficitur nec rhoncus ut, tincidunt vel dolor. Phasellus luctus ex aliquet justo commodo fringilla. Vestibulum non nulla imperdiet, dapibus massa imperdiet, imperdiet turpis. Nulla feugiat cursus orci ut malesuada. Integer blandit, nisi sit amet luctus rhoncus, magna enim mollis felis, vel pellentesque felis neque a ex.
-            </p>
+            <div class="pt-4 d-flex flex-wrap justify-content-evenly">
+
+                <!-- Cadastrar -->
+                <div class="card mb-4" style="width: 18rem;">
+                    <img src="imagens/cadastro.png" class="card-img-top img-fluid" alt="...">
+                    <div class="card-body text-center">
+                        <a href="#" class="btn btn-secondary">Cadastrar</a>
+                    </div>
+                </div>
+
+                <!-- Consultar -->
+                <div class="card mb-4" style="width: 18rem;">
+                    <img src="imagens/consultar-2.jpg" class="card-img-top img-fluid" alt="...">
+                    <div class="card-body text-center">
+                        <a href="#" class="btn btn-secondary">Consultar</a>
+                    </div>
+                </div>
+
+            </div>
 
         </div>
     </div>

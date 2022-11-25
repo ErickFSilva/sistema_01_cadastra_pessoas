@@ -35,5 +35,5 @@
     else {
         $_SESSION['autenticado'] = 'NAO';
 
-        header('Location: ../index.php?erro=erroLogin');
+        header('Location: ../index.php?login=erroLogin');
     }

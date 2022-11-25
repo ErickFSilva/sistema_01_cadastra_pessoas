@@ -7,32 +7,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastra Pessoas</title>
 
-    <!-- Bootstrap -->
+    <!-- BOOTSTRAP -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/estilo.css">
 </head>
 
-<body>
+<body class="bg-verde-azul-1">
 
-    <div class="container">
+    <div class="container altura-100">
 
-        <div class="mt-5 d-flex justify-content-center">
+        <div class="d-flex justify-content-center align-items-center altura-100">
             <div class="card">
-                <div class="card-header">
-                    Login
-                </div>
+                
+                <?php if(!isset($_GET['login'])) { ?>
+                    <div class="card-header text-bg-secondary">
+                        <span class="largura-100 d-inline-block text-center">Entrar no sistema</span>
+                    </div>
+                <?php } ?>
+                <!-- # -->
+                <?php if(isset($_GET['login']) && $_GET['login'] == 'erroLogin') { ?>
+                    <div class="card-header text-bg-danger">
+                        <span class="largura-100 d-inline-block text-center">Usuário ou senha inválida!</span>
+                    </div>
+                <?php } ?>
+                <!-- # -->
+                <?php if(isset($_GET['login']) && $_GET['login'] == 'erroPaginas') { ?>
+                    <div class="card-header text-bg-danger">
+                        <span class="largura-100 d-inline-block text-center">Logue-se para ter acesso ao conteúdo!</span>
+                    </div>
+                <?php } ?>
 
                 <div class="card-body">
 
                     <form action="php/valida_login.php" method="POST">
 
-                        <input type="text" class="form-control mb-2" name="login" placeholder="Login">
-                        <input type="password" class="form-control mb-2" name="senha" placeholder="Senha">
+                        <div class="form group card-corpo">
+                            <input type="text" class="form-control mb-3" name="login" placeholder="Login">
+                            <input type="password" class="form-control mb-3" name="senha" placeholder="Senha">
 
-                        <input type="submit" class="btn btn-primary" value="Entrar">
+                            <input type="submit" class="btn btn-secondary" value="Entrar">
+                        </div>
 
                     </form>
 
                 </div>
+                
             </div>
         </div>
 

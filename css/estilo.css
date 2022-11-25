@@ -1,0 +1,37 @@
+@charset "utf-8";
+
+/* ESTRUTURA */
+html, body {
+    height: 100%;
+}
+
+
+/* CARD */
+.card-corpo {
+    margin: 6px;
+    padding: 20px;
+    border: 1px solid rgba(47, 79, 79, 0.3);
+    border-radius: 7px;
+}
+
+.card-img-top {
+    height: 145px;
+}
+
+.btn:hover {
+    background-color: #2f4f4f;
+}
+
+
+/* CORES */
+.cor-verde-azul-1 { color: #2f4f4f; }
+.bg-verde-azul-1 { background-color: #2f4f4f; }
+
+.cor-cinza-1 { color: #f3f3f3; }
+.bg-cinza-1 { background-color: #f3f3f3; }
+
+
+/* GERAL */
+.largura-100 { width: 100%; }
+
+.altura-100 { height: 100%; }
