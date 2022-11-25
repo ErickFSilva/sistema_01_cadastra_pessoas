@@ -14,11 +14,28 @@
 <body>
 
     <div class="container">
-        <div class="row">
 
-            <div></div>
+        <div class="mt-5 d-flex justify-content-center">
+            <div class="card">
+                <div class="card-header">
+                    Login
+                </div>
 
+                <div class="card-body">
+
+                    <form action="php/valida_login.php" method="POST">
+
+                        <input type="text" class="form-control mb-2" name="login" placeholder="Login">
+                        <input type="password" class="form-control mb-2" name="senha" placeholder="Senha">
+
+                        <input type="submit" class="btn btn-primary" value="Entrar">
+
+                    </form>
+
+                </div>
+            </div>
         </div>
+
     </div>
 
 

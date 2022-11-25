@@ -13,6 +13,6 @@
     catch(PDOException $erro) {
 
         echo 'Erro: ' . $erro->getCode();
-        echo '<br>Mensagem: ' . $erro->getMessage();
+        echo '<br>Mensagem: ' . $erro->getMessage(). '<hr>';
 
     }
