@@ -10,6 +10,8 @@
 
     // Conexão com o DB
     require_once 'conexao_db.php';
+    $conexaoDb = new Conexao();
+    $conexao = $conexaoDb->conectar();
 
     // Querys
     $sqlSelect = 'select id, login, senha, tipo from tb_usuarios';
