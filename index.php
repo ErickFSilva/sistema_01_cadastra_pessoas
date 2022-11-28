@@ -20,22 +20,25 @@
 
         <div class="d-flex justify-content-center align-items-center altura-100">
             <div class="card">
-                
-                <?php if(!isset($_GET['login'])) { ?>
-                    <div class="card-header text-bg-secondary">
+
+                <!-- # -->
+                <?php if (!isset($_GET['login'])) { ?>
+                    <div class="card-header text-bg-primary">
                         <span class="largura-100 d-inline-block text-center">Entrar no sistema</span>
                     </div>
                 <?php } ?>
+
                 <!-- # -->
-                <?php if(isset($_GET['login']) && $_GET['login'] == 'erroLogin') { ?>
+                <?php if (isset($_GET['login']) && $_GET['login'] == 'erroLogin') { ?>
                     <div class="card-header text-bg-danger">
                         <span class="largura-100 d-inline-block text-center">Usuário ou senha inválida!</span>
                     </div>
                 <?php } ?>
+
                 <!-- # -->
-                <?php if(isset($_GET['login']) && $_GET['login'] == 'erroPaginas') { ?>
+                <?php if (isset($_GET['login']) && $_GET['login'] == 'erroPaginas') { ?>
                     <div class="card-header text-bg-danger">
-                        <span class="largura-100 d-inline-block text-center">Logue-se para ter acesso ao conteúdo!</span>
+                        <span class="largura-100 d-inline-block text-center">Logue-se para ter acesso ao sistema!</span>
                     </div>
                 <?php } ?>
 
@@ -43,17 +46,31 @@
 
                     <form action="php/valida_login.php" method="POST">
 
-                        <div class="form group card-corpo">
+                        <div class="form group card-corpo-login">
                             <input type="text" class="form-control mb-3" name="login" placeholder="Login">
                             <input type="password" class="form-control mb-3" name="senha" placeholder="Senha">
 
-                            <input type="submit" class="btn btn-secondary" value="Entrar">
+                            <input type="submit" class="btn btn-primary" value="Entrar">
                         </div>
 
                     </form>
 
                 </div>
-                
+
+                <?php if (isset($_GET['login']) && ($_GET['login'] == 'erroLogin' || $_GET['login'] == 'erroPaginas')) { ?>
+                    <div class="card-footer">
+
+                        <!-- Incorpora o Modal à página -->
+                        <?php include_once "modal_cadastrar_usuarios.php" ?>
+
+                        <!-- Button trigger modal -->
+                        <a href="#" class="d-block text-end nav-link link-danger" data-bs-toggle="modal" data-bs-target="#modal_cadastrar_usuarios">
+                            <small>Não tenho cadastro</small>
+                        </a>
+
+                    </div>
+                <?php } ?>
+
             </div>
         </div>
 
