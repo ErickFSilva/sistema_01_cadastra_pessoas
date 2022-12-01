@@ -15,17 +15,17 @@
             $conexao = new PDO($dsn, $login, $senha);
 
             // Query
-            // $sqlTable = "create table if not exists tb_pessoas ( ";
-            // $sqlTable .= " id int primary key auto_increment, ";
-            // $sqlTable .= " nome varchar(100) not null, ";
-            // $sqlTable .= " telefone varchar(30) not null, ";
-            // $sqlTable .= " email varchar(100), ";
-            // $sqlTable .= " endereco varchar(100), ";
-            // $sqlTable .= " complemento varchar(50), ";
-            // $sqlTable .= " cidade varchar(50), ";
-            // $sqlTable .= " estado char(2), ";
-            // $sqlTable .= " pais varchar(30) ";
-            // $sqlTable .= " );";
+            $sqlTable = "create table if not exists tb_pessoas ( ";
+            $sqlTable .= " id int primary key auto_increment, ";
+            $sqlTable .= " nome varchar(100) not null, ";
+            $sqlTable .= " telefone varchar(30) not null, ";
+            $sqlTable .= " email varchar(100), ";
+            $sqlTable .= " endereco varchar(100), ";
+            $sqlTable .= " complemento varchar(50), ";
+            $sqlTable .= " cidade varchar(50), ";
+            $sqlTable .= " estado char(2), ";
+            $sqlTable .= " pais varchar(30) ";
+            $sqlTable .= " );";
 
             $sqlInsert = "insert into tb_pessoas values(null, ";
             $sqlInsert .= " :nome, :telefone, :email, :endereco, ";
@@ -44,7 +44,7 @@
             $stmtInsert->bindValue(':pais', $_POST['pais']);
             
             // Executando instruções no DB
-            // $conexao->query($sqlTable);
+            $conexao->query($sqlTable);
             $stmtInsert->execute();
 
             // Retorna para a página de login

@@ -15,12 +15,12 @@
             $conexao = new PDO($dsn, $login, $senha);
 
             // Querys
-            // $sqlTable = "create table if not exists tb_usuarios ( ";
-            // $sqlTable .= " id int primary key auto_increment, ";
-            // $sqlTable .= " login varchar(50) not null, ";
-            // $sqlTable .= " senha varchar(30) not null, ";
-            // $sqlTable .= " tipo char(5) ";
-            // $sqlTable .= " );";
+            $sqlTable = "create table if not exists tb_usuarios ( ";
+            $sqlTable .= " id int primary key auto_increment, ";
+            $sqlTable .= " login varchar(50) not null, ";
+            $sqlTable .= " senha varchar(30) not null, ";
+            $sqlTable .= " tipo char(5) ";
+            $sqlTable .= " );";
 
             $sqlInsert = "insert into tb_usuarios values(null, :login, :senha, :tipo)";
 
@@ -31,7 +31,7 @@
             $stmtInsert->bindValue(':tipo', $_POST['tipo']);
 
             // Executando instruções no DB
-            // $conexao->query($sqlTable);
+            $conexao->query($sqlTable);
             $stmtInsert->execute();
 
             // Retorna para a página de login
