@@ -52,16 +52,25 @@
                     </div>
 
                 </div>
+
+                <!--  -->
+                <?php if(isset($_GET['cad']) && $_GET['cad'] == 'erroCadPessoa') { ?>
+                    <div class="text-danger text-center">
+                        <?= $_SESSION['erroCadPessoa'] ?>
+                    </div>
+                <?php } ?>
+                <!--  -->
+                <?php if(isset($_GET['cad']) && $_GET['cad'] == 'okCadPessoa') { ?>
+                    <div class="text-success text-center">
+                        <?= $_SESSION['okCadPessoa'] ?>
+                    </div>
+                <?php } ?>
+                <!--  -->
+
             </div>
 
             <div class="col-lg-8">
                 <div class="mt-4 border-top">
-
-                    <?php if(isset($_GET['login']) && $_GET['login'] == 'erroCadPessoa') { ?>
-                        <div class="text-danger text-center">
-                            <?= $_SESSION['erroCadPessoa'] ?>
-                        </div>
-                    <?php } ?>
 
                     <!--  -->
 

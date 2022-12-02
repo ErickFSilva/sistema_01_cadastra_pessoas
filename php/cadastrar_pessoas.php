@@ -3,30 +3,19 @@
     // 
     if(!empty($_POST['nome']) && !empty($_POST['telefone'])) {
 
-        // DSN: Data Source Name
-        $dsn = "mysql:host=localhost;dbname=db_cadastra_pessoas";
-        $login = "root";
-        $senha = "";
-
         // 
         try {
 
-            // Conexão com o DB
-            $conexao = new PDO($dsn, $login, $senha);
+            // Abre uma sessão
+            session_start();
+
+            // 
+            require_once 'conexao_db.php';
+
+            $conexaoDb = new ConexaoDb();
+            $conexao = $conexaoDb->conectar();
 
             // Query
-            $sqlTable = "create table if not exists tb_pessoas ( ";
-            $sqlTable .= " id int primary key auto_increment, ";
-            $sqlTable .= " nome varchar(100) not null, ";
-            $sqlTable .= " telefone varchar(30) not null, ";
-            $sqlTable .= " email varchar(100), ";
-            $sqlTable .= " endereco varchar(100), ";
-            $sqlTable .= " complemento varchar(50), ";
-            $sqlTable .= " cidade varchar(50), ";
-            $sqlTable .= " estado char(2), ";
-            $sqlTable .= " pais varchar(30) ";
-            $sqlTable .= " );";
-
             $sqlInsert = "insert into tb_pessoas values(null, ";
             $sqlInsert .= " :nome, :telefone, :email, :endereco, ";
             $sqlInsert .= " :complemento, :cidade, :estado, :pais ";
@@ -44,11 +33,12 @@
             $stmtInsert->bindValue(':pais', $_POST['pais']);
             
             // Executando instruções no DB
-            $conexao->query($sqlTable);
             $stmtInsert->execute();
 
-            // Retorna para a página de login
-            header('Location: ../home.php');
+            // Retorna para a página de home
+            $_SESSION['okCadPessoa'] = '<strong>Cadastro realizado com sucesso!</strong>';
+
+            header('Location: ../home.php?cad=okCadPessoa');
 
         }
         catch(PDOException $e) {
@@ -56,15 +46,10 @@
             // Abre uma sessão
             session_start();
 
+            // Retorna para a página de home
             $_SESSION['erroCadPessoa'] = '<strong>Algo deu errado no cadastro, tente cadastrar novamente!</strong>';
 
-            header('Location: ../home.php?login=erroCadPessoa');
-
-            // echo '<strong>Algo deu errado no cadastro!</strong><br>';
-            // echo $e->getMessage();
-            // echo '<hr>';
-            // echo 'Retorne à página Home e tente cadastrar novamente... ';
-            // echo '<a href="../home.php?login=erroCadPessoa"><b>HOME</b></a>'; 
+            header('Location: ../home.php?cad=erroCadPessoa');
 
         }
 

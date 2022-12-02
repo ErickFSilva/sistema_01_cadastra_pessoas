@@ -13,6 +13,8 @@ drop database nome_banco;
 drop table tb_pessoas;
 delete from tb_usuarios;
 
+delete from tb_usuarios where id between 2 and 5;
+
 
 -- TABELAS
 create table if not exists tb_usuarios (

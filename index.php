@@ -21,7 +21,7 @@
         <div class="d-flex justify-content-center align-items-center altura-100">
             <div class="card">
 
-                <!-- # -->
+                <!-- card header -->
                 <?php if (!isset($_GET['login'])) { ?>
                     <div class="card-header text-bg-primary">
                         <span class="largura-100 d-inline-block text-center">Entrar no sistema</span>
@@ -41,7 +41,9 @@
                         <span class="largura-100 d-inline-block text-center">Logue-se para ter acesso ao sistema!</span>
                     </div>
                 <?php } ?>
+                <!-- card header -->
 
+                <!-- card body -->
                 <div class="card-body">
 
                     <form action="php/valida_login.php" method="POST">
@@ -56,8 +58,10 @@
                     </form>
 
                 </div>
+                <!-- card body -->
 
-                <?php if (isset($_GET['login']) && ($_GET['login'] == 'erroLogin' || $_GET['login'] == 'erroPaginas')) { ?>
+                <!-- card footer -->
+                <?php if(isset($_GET['login']) && ($_GET['login'] == 'erroLogin' || $_GET['login'] == 'erroPaginas')) { ?>
                     <div class="card-footer">
 
                         <!-- Incorpora o Modal à página -->
@@ -70,6 +74,27 @@
 
                     </div>
                 <?php } ?>
+
+                <?php session_start(); if(isset($_GET['cad']) && $_GET['cad'] == 'cadLoginSucesso') { ?>
+                    <div class="card-footer">
+
+                        <div class="text-success text-center">
+                            <?= $_SESSION['cadLoginSucesso'] ?>
+                        </div>
+
+                    </div>
+                <?php } ?>
+
+                <?php if(isset($_GET['cad']) && $_GET['cad'] == 'cadLoginErro') { ?>
+                    <div class="card-footer">
+
+                        <div class="text-danger text-center">
+                            <?= $_SESSION['cadLoginErro'] ?>
+                        </div>
+
+                    </div>
+                <?php } ?>
+                <!-- card footer -->
 
             </div>
         </div>

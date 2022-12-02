@@ -1,54 +1,45 @@
 <?php
 
     // 
-    if(!empty($_POST['login']) && !empty($_POST['senha']) && !empty($_POST['tipo'])) {
-        
-        // DSN: Data Source Name
-        $dsn = "mysql:host=localhost;dbname=db_cadastra_pessoas";
-        $login = "root";
-        $senha = "";
+    try {
+
+        // Abre uma sessão
+        session_start();
 
         // 
-        try {
+        require_once 'conexao_db.php';
 
-            // Conexão com o DB
-            $conexao = new PDO($dsn, $login, $senha);
+        $conexaoDb = new ConexaoDb();
+        $conexao = $conexaoDb->conectar();
 
-            // Querys
-            $sqlTable = "create table if not exists tb_usuarios ( ";
-            $sqlTable .= " id int primary key auto_increment, ";
-            $sqlTable .= " login varchar(50) not null, ";
-            $sqlTable .= " senha varchar(30) not null, ";
-            $sqlTable .= " tipo char(5) ";
-            $sqlTable .= " );";
+        // Query
+        $sqlInsert = "insert into tb_usuarios values(null, :login, :senha, :tipo)";
 
-            $sqlInsert = "insert into tb_usuarios values(null, :login, :senha, :tipo)";
+        // Prepara a query contra SQLInject
+        $stmtInsert = $conexao->prepare($sqlInsert);
+        $stmtInsert->bindValue(':login', $_POST['login']);
+        $stmtInsert->bindValue(':senha', $_POST['senha']);
+        $stmtInsert->bindValue(':tipo', $_POST['tipo']);
 
-            // Prepara a query contra SQLInject
-            $stmtInsert = $conexao->prepare($sqlInsert);
-            $stmtInsert->bindValue(':login', $_POST['login']);
-            $stmtInsert->bindValue(':senha', $_POST['senha']);
-            $stmtInsert->bindValue(':tipo', $_POST['tipo']);
+        // Executando instruções no DB
+        $stmtInsert->execute();
 
-            // Executando instruções no DB
-            $conexao->query($sqlTable);
-            $stmtInsert->execute();
+        // Retorna para a página de login
+        $_SESSION['cadLoginSucesso'] = 'Cadastro realizado com sucesso!';
+        header('Location: ../index.php?cad=cadLoginSucesso');
 
-            // Retorna para a página de login
-            header('Location: ../index.php');
+    }
+    catch(PDOException $e) {
 
-        }
-        catch(PDOException $e) {
+        // echo '<strong>Algo deu errado no cadastro!</strong><br>';
+        // echo $e->getMessage();
+        // echo '<hr>';
+        // echo 'Retorne à tela de login e tente cadastrar novamente... ';
+        // echo '<a href="../index.php?login=erroLogin">Cadastra Usuário</a>';
 
-            echo '<strong>Algo deu errado no cadastro!</strong><br>';
-            echo $e->getMessage();
-            echo '<hr>';
-            echo 'Retorne à tela de login e tente cadastrar novamente... ';
-            echo '<a href="../index.php?login=erroLogin">Cadastra Usuário</a>';
-
-            // header('Location: ../index.php?login=erroLogin');
-
-        }
+        // Retorna para a página de login
+        $_SESSION['cadLoginErro'] = 'Algo deu errado no cadastro!';
+        header('Location: ../index.php?cad=cadLoginErro');
 
     }
 

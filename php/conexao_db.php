@@ -1,6 +1,6 @@
 <?php // db_cadastra_pessoas
 
-    class Conexao {
+    class ConexaoDb {
 
         // Atributos de conexão
         private $host = 'localhost';
@@ -13,13 +13,13 @@
 
             try {
 
-                $conexaoDb = new PDO(
+                $conexao = new PDO(
                     "mysql:host=$this->host;dbname=$this->dbname",
                     "$this->user",
                     "$this->pass"
                 );
 
-                return $conexaoDb;
+                return $conexao;
 
             }
             catch(PDOException $e) {

@@ -10,7 +10,8 @@
 
     // Conexão com o DB
     require_once 'conexao_db.php';
-    $conexaoDb = new Conexao();
+    
+    $conexaoDb = new ConexaoDb();
     $conexao = $conexaoDb->conectar();
 
     // Querys
