@@ -25,7 +25,6 @@
         $stmtInsert->execute();
 
         // Retorna para a página de login
-        $_SESSION['cadLoginSucesso'] = 'Cadastro realizado com sucesso!';
         header('Location: ../index.php?cad=cadLoginSucesso');
 
     }
@@ -38,7 +37,6 @@
         // echo '<a href="../index.php?login=erroLogin">Cadastra Usuário</a>';
 
         // Retorna para a página de login
-        $_SESSION['cadLoginErro'] = 'Algo deu errado no cadastro!';
         header('Location: ../index.php?cad=cadLoginErro');
 
     }

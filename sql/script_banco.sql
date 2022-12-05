@@ -11,7 +11,9 @@ describe tb_usuarios;
 
 drop database nome_banco;
 drop table tb_pessoas;
+
 delete from tb_usuarios;
+delete from tb_pessoas;
 
 delete from tb_usuarios where id between 2 and 5;
 
@@ -44,3 +46,6 @@ insert into tb_usuarios (login, senha, tipo) values ('erick.silva', '1234', 'use
 -- SELECTS
 select * from tb_usuarios;
 select * from tb_pessoas;
+
+select nome, telefone, email, endereco, complemento, cidade, estado, pais
+from tb_pessoas;

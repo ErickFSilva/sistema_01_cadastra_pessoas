@@ -75,21 +75,21 @@
                     </div>
                 <?php } ?>
 
-                <?php session_start(); if(isset($_GET['cad']) && $_GET['cad'] == 'cadLoginSucesso') { ?>
-                    <div class="card-footer">
+                <?php if(isset($_GET['cad']) && $_GET['cad'] == 'cadLoginSucesso') { ?>
+                    <div class="card-footer text-bg-success">
 
-                        <div class="text-success text-center">
-                            <?= $_SESSION['cadLoginSucesso'] ?>
+                        <div class="text-center">
+                            Cadastro realizado com sucesso!
                         </div>
 
                     </div>
                 <?php } ?>
 
                 <?php if(isset($_GET['cad']) && $_GET['cad'] == 'cadLoginErro') { ?>
-                    <div class="card-footer">
+                    <div class="card-footer text-bg-danger">
 
-                        <div class="text-danger text-center">
-                            <?= $_SESSION['cadLoginErro'] ?>
+                        <div class="text-center">
+                            Algo deu errado no cadastro!
                         </div>
 
                     </div>

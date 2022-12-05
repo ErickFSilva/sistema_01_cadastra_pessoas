@@ -1,5 +1,6 @@
 <?php require_once "php/validador_acesso.php" ?>
 <?php require_once "php/cadastrar_pessoas.php" ?>
+<?php require_once "php/servicos.php" ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -44,35 +45,65 @@
                     </div>
 
                     <!-- Consultar -->
-                    <div class="card mb-4" style="width: 18rem;">
+                    <!-- <div class="card mb-4" style="width: 18rem;">
                         <img src="imagens/consultar-2.jpg" class="card-img-top img-fluid" alt="consultar">
                         <div class="card-body text-center">
                             <a href="#" class="btn btn-secondary">Consultar</a>
                         </div>
-                    </div>
+                    </div> -->
 
                 </div>
 
-                <!--  -->
-                <?php if(isset($_GET['cad']) && $_GET['cad'] == 'erroCadPessoa') { ?>
+                <!-- Retorno após ação com erro no cadastro -->
+                <?php if (isset($_GET['cad']) && $_GET['cad'] == 'erroCadPessoa') { ?>
                     <div class="text-danger text-center">
                         <?= $_SESSION['erroCadPessoa'] ?>
                     </div>
                 <?php } ?>
-                <!--  -->
-                <?php if(isset($_GET['cad']) && $_GET['cad'] == 'okCadPessoa') { ?>
+
+                <!-- Retorno após ação com sucesso no cadastro -->
+                <?php if (isset($_GET['cad']) && $_GET['cad'] == 'okCadPessoa') { ?>
                     <div class="text-success text-center">
                         <?= $_SESSION['okCadPessoa'] ?>
                     </div>
                 <?php } ?>
-                <!--  -->
 
             </div>
 
             <div class="col-lg-8">
-                <div class="mt-4 border-top">
+                <div class="mt-4">
 
-                    <!--  -->
+                    <div class="table-responsive">
+                        <!-- Tabela -->
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <span class="text-bg-primary py-1 px-2">N</span>ome
+                                    </th>
+                                    <th>
+                                        <span class="text-bg-primary py-1 px-2">T</span>elefone
+                                    </th>
+                                    <th>
+                                        <span class="text-bg-primary py-1 px-2">E</span>-Mail
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-group-divider">
+
+                                <?php foreach ($pessoas as $chave => $pessoa) { ?>
+
+                                    <tr>
+                                        <td><?= $pessoa['nome'] ?></td>
+                                        <td><?= $pessoa['telefone'] ?></td>
+                                        <td><?= $pessoa['email'] ?></td>
+                                    </tr>
+
+                                <?php } ?>
+
+                            </tbody>
+                        </table>
+                    </div>
 
                 </div>
             </div>
